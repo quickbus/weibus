@@ -1,0 +1,15 @@
+{
+  "name": "weibus",
+  "version": "0.0.1",
+  "description": "weibo client for quickbus",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "weixin-robot": "~0.5.7",
+    "express": "~3.8.0"
+  }
+}
