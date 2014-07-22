@@ -10,6 +10,10 @@
   "license": "MIT",
   "dependencies": {
     "weixin-robot": "~0.5.7",
-    "express": "~3.8.0"
+    "express": "~3.8.0",
+    "request": "~2.37.0"
+  },
+  "devDependencies": {
+    "chai": "~1.9.1"
   }
 }
