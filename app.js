@@ -20,6 +20,6 @@ robot.watch(app, {
 
 app.use(express.logger('dev'));
 
-app.listen(80, function() {
+app.listen(process.env.PORT||3000, function() {
   console.log('robot on~');
 });
