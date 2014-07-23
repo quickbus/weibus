@@ -3,6 +3,8 @@ var expect = require('chai').expect;
 var robot = require('weixin-robot');
 var ruler = require('../lib/rules.js');
 
+
+
 describe('rules', function() {
 
   before(function() {
@@ -33,19 +35,25 @@ describe('rules', function() {
   });
 
 
-  it('can hi and hi back',function(){
-    robot.reply({text:'who r u'},function(err,info){
+  it('can hi and hi back', function() {
+    robot.reply({
+      text: 'who r u'
+    }, function(err, info) {
       expect(info.reply).to.equal('I\'m a robot.');
     });
   });
 
-  it('can hi and word',function(done){
-    robot.reply({text:'罗山'},function(err,info){
-      expect(info.reply).to.equal('罗山路线');
-      done();
+  it('can hi and word', function(done) {
+    robot.reply({
+      text: 'ASB'
+    }, function(err, info) {
+      try {
+        expect(info.reply).to.equal('ASB班车1B');
+        done();
+      } catch (e) {
+        done(e);
+      }
     });
   });
-
-
 
 });

@@ -1,1 +1,1 @@
--R spec --recursive  --timeout 5000
+-R spec --recursive  --timeout 15000

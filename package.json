@@ -12,7 +12,10 @@
     "weixin-robot": "~0.5.7",
     "express": "~3.8.0",
     "request": "~2.37.0",
-    "bluebird": "~2.2.2"
+    "bluebird": "~2.2.2",
+    "lodash": "~2.4.1",
+    "urlencode": "~0.2.0",
+    "MD5": "~1.2.1"
   },
   "devDependencies": {
     "chai": "~1.9.1"
