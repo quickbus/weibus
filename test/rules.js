@@ -3,7 +3,6 @@ var expect = require('chai').expect;
 var robot = require('weixin-robot');
 var ruler = require('../lib/rules.js');
 
-
 describe('rules', function() {
 
   before(function() {

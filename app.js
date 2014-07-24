@@ -6,12 +6,10 @@ var express = require('express');
 var robot = require('weixin-robot');
 var ruler = require('./lib/rules.js');
 
-
 var app = express();
 
 
 ruler(robot);
-
 
 robot.watch(app, {
   token: '79d08038ad8c7c921751a60f57401525',
