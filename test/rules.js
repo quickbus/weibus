@@ -4,7 +4,6 @@ var robot = require('weixin-robot');
 var ruler = require('../lib/rules.js');
 
 
-
 describe('rules', function() {
 
   before(function() {
@@ -48,7 +47,7 @@ describe('rules', function() {
       text: 'ASB'
     }, function(err, info) {
       try {
-        expect(info.reply).to.equal('ASB班车1B');
+        expect(info.reply).to.have.keys(['title','picUrl','description']);
         done();
       } catch (e) {
         done(e);
