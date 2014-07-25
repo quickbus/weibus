@@ -47,6 +47,7 @@ describe('rules', function() {
     }, function(err, info) {
       try {
         expect(info.reply).to.have.keys(['title','picUrl','description']);
+        console.log(info.reply);
         done();
       } catch (e) {
         done(e);
