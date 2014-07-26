@@ -27,7 +27,7 @@ describe('rules', function() {
         done(err);
       }
 
-      expect(info.reply).to.equal('直接输入路线名称查询位置');
+      expect(info.reply).to.contain('直接输入路线名称查询位置');
       done();
     });
   });
