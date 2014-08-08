@@ -10,7 +10,7 @@ describe('rules', function() {
   });
 
   after(function() {
-    robot.routes = [];
+    robot.reset();
   });
 
   it('should setup rules', function() {
