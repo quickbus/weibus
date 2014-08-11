@@ -1,6 +1,6 @@
 'use strict';
 var expect = require('chai').expect;
-var robot = require('weixin-robot');
+var robot = require('webot');
 var ruler = require('../lib/rules.js');
 
 describe('rules', function() {
@@ -54,5 +54,33 @@ describe('rules', function() {
       }
     });
   });
+
+  it.only('answer to phone numbers', function(done){
+    var info = new robot.Info();
+
+    console.log( Object.keys(info) );
+    // expect(info).has.keys('session');
+    info.text = '13524677703';
+    robot.reply(info, function(err, _info) {
+      try{
+        expect(_info.reply).to.match(/\d+:/);
+        console.log(_info.reply);
+      } catch (err){
+        done(err);
+      }
+      info.text = 'x1';
+      robot.reply(info,function(err, _info){
+
+        console.log(_info.reply);
+        done();
+      });
+
+
+
+    });
+
+  });
+
+
 
 });
