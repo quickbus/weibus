@@ -3,7 +3,7 @@
 
 
 var express = require('express');
-var robot = require('webot');
+var robot = require('weixin-robot');
 var ruler = require('./lib/rules.js');
 
 var app = express();
