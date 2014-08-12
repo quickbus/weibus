@@ -18,12 +18,13 @@ robot.watch(app, {
 
 app.use(express.logger('dev'));
 
+app.use(express.cookieParser());
 app.use(express.session({
   secret: 'e4069e23bc38c7388810dfd60feec6ab',
   store: new express.session.MemoryStore()
 }));
 
 
-app.listen(process.env.PORT||3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log('robot on~');
 });
