@@ -1,6 +1,6 @@
 'use strict';
 var expect = require('chai').expect;
-var robot = require('webot');
+var robot = require('weixin-robot');
 var ruler = require('../lib/rules.js');
 
 describe('rules', function() {
