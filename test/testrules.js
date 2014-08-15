@@ -55,12 +55,13 @@ describe('rules', function() {
     });
   });
 
-  it.only('answer to phone numbers', function(done){
+  it('answer to phone numbers', function(done){
     var info = new robot.Info();
 
     console.log( Object.keys(info) );
     // expect(info).has.keys('session');
     info.text = '13524677703';
+    info.session ={};
     robot.reply(info, function(err, _info) {
       try{
         expect(_info.reply).to.match(/\d+:/);
@@ -68,7 +69,7 @@ describe('rules', function() {
       } catch (err){
         done(err);
       }
-      info.text = 'x1';
+      info.text = '2';
       robot.reply(info,function(err, _info){
 
         console.log(_info.reply);
