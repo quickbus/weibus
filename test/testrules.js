@@ -59,7 +59,6 @@ describe('rules', function() {
     var info = new robot.Info();
 
     console.log( Object.keys(info) );
-    // expect(info).has.keys('session');
     info.text = '13524677703';
     info.session ={};
     robot.reply(info, function(err, _info) {
@@ -75,9 +74,6 @@ describe('rules', function() {
         console.log(_info.reply);
         done();
       });
-
-
-
     });
 
   });
