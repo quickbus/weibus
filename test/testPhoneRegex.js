@@ -13,6 +13,4 @@ describe('waiting rules', function() {
     done();
   });
 
-
-
 });
