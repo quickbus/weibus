@@ -1,9 +1,9 @@
 'use strict';
 var expect = require('chai').expect;
 
-describe('waiting rules', function() {
+describe('PhoneReg', function() {
 
-  it('should reply phonenumbers ', function(done) {
+  it('should match phonenumbers ', function(done) {
     var phoneReg = /^[0-9]{11}$/;
 
     expect(phoneReg.test('notnumber')).to.be.not.ok;

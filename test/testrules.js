@@ -17,7 +17,6 @@ describe('rules', function() {
     expect(robot.routes.length).above(2);
   });
 
-
   it('answer to request', function(done) {
 
     expect(robot.reply).to.be.ok;
@@ -26,7 +25,6 @@ describe('rules', function() {
       if (err) {
         done(err);
       }
-
       expect(info.reply).to.contain('直接输入路线名称查询位置');
       done();
     });
@@ -47,7 +45,6 @@ describe('rules', function() {
     }, function(err, info) {
       try {
         expect(info.reply).to.have.keys(['title','picUrl','description']);
-        console.log(info.reply);
         done();
       } catch (e) {
         done(e);
@@ -58,20 +55,17 @@ describe('rules', function() {
   it('answer to phone numbers', function(done){
     var info = new robot.Info();
 
-    console.log( Object.keys(info) );
     info.text = '13524677703';
     info.session ={};
     robot.reply(info, function(err, _info) {
       try{
         expect(_info.reply).to.match(/\d+:/);
-        console.log(_info.reply);
       } catch (err){
         done(err);
       }
       info.text = '2';
       robot.reply(info,function(err, _info){
-
-        console.log(_info.reply);
+        expect(_info.reply).to.have.keys(['title','picUrl','description']);
         done();
       });
     });
