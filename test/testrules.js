@@ -30,7 +30,6 @@ describe('rules', function() {
     });
   });
 
-
   it('can hi and hi back', function() {
     robot.reply({
       text: 'who r u'
@@ -44,7 +43,7 @@ describe('rules', function() {
       text: 'ASB'
     }, function(err, info) {
       try {
-        expect(info.reply).to.have.keys(['title','picUrl','description']);
+        expect(info.reply).to.have.keys(['title', 'picUrl', 'description']);
         done();
       } catch (e) {
         done(e);
@@ -52,26 +51,24 @@ describe('rules', function() {
     });
   });
 
-  it('answer to phone numbers', function(done){
+  it('answer to phone numbers', function(done) {
     var info = new robot.Info();
 
     info.text = '13524677703';
-    info.session ={};
+    info.session = {};
     robot.reply(info, function(err, _info) {
-      try{
+      try {
         expect(_info.reply).to.match(/\d+:/);
-      } catch (err){
+      } catch (err) {
         done(err);
       }
       info.text = '2';
-      robot.reply(info,function(err, _info){
-        expect(_info.reply).to.have.keys(['title','picUrl','description']);
+      robot.reply(info, function(err, _info) {
+        expect(_info.reply).to.have.keys(['title', 'picUrl', 'description']);
         done();
       });
     });
 
   });
-
-
 
 });
