@@ -43,7 +43,7 @@ describe('rules', function() {
       text: 'ASB'
     }, function(err, info) {
       try {
-        expect(info.reply).to.have.keys(['title', 'picUrl', 'description']);
+        expect(info.reply).to.have.keys(['title', 'picUrl', 'description', 'url']);
         done();
       } catch (e) {
         done(e);
@@ -64,7 +64,7 @@ describe('rules', function() {
       }
       info.text = '2';
       robot.reply(info, function(err, _info) {
-        expect(_info.reply).to.have.keys(['title', 'picUrl', 'description']);
+        expect(_info.reply).to.have.keys(['title', 'picUrl', 'description', 'url']);
         done();
       });
     });
