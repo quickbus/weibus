@@ -13,20 +13,20 @@ ruler(robot);
 
 robot.watch(app, {
   token: '79d08038ad8c7c921751a60f57401525',
-  path: '/'
+  path: '/robot'
 });
 
-
-
 app.use(express.logger('dev'));
-
 app.use(express.cookieParser());
 app.use(express.session({
   secret: 'e4069e23bc38c7388810dfd60feec6ab',
   store: new express.session.MemoryStore()
 }));
 app.enable('trust proxy');
-
 app.listen(process.env.PORT || 3000, function() {
   console.log('robot on~');
+});
+
+app.get('/index', function(req, res) {
+  res.send('index');
 });

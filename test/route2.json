@@ -1,0 +1,145 @@
+[{
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "1",
+        "station_name": "中环凯旋公寓（下客站）",
+        "station_lng": "121.40073627",
+        "station_lat": "31.27145345"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "2",
+        "station_name": "水岸蓝桥（下客站）",
+        "station_lng": "121.40106350",
+        "station_lat": "31.27560742"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "3",
+        "station_name": "武陵东路金鑫花园",
+        "station_lng": "121.40110642",
+        "station_lat": "31.27799611"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "4",
+        "station_name": "武陵东路478弄颐和华城",
+        "station_lng": "121.39930934",
+        "station_lat": "31.27781730"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "5",
+        "station_name": "武陵东路普信仓储",
+        "station_lng": "121.39198691",
+        "station_lat": "31.27811989"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "6",
+        "station_name": "恒盛鼎城",
+        "station_lng": "121.38530821",
+        "station_lat": "31.27822534"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "7",
+        "station_name": "古浪路李子园（下客站）",
+        "station_lng": "121.38150752",
+        "station_lat": "31.29239569"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "8",
+        "station_name": "怡佳公寓",
+        "station_lng": "121.38517678",
+        "station_lat": "31.29300995"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "9",
+        "station_name": "安居金祁新城",
+        "station_lng": "121.38159335",
+        "station_lat": "31.29514608"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "10",
+        "station_name": "古浪路李子园（上客站）",
+        "station_lng": "121.38140023",
+        "station_lat": "31.28523514"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "11",
+        "station_name": "祥和星宇花园",
+        "station_lng": "121.39404953",
+        "station_lat": "31.28339220"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "12",
+        "station_name": "金鑫花园华灵路",
+        "station_lng": "121.40061557",
+        "station_lat": "31.28140251"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "13",
+        "station_name": "金鑫花园真金路",
+        "station_lng": "121.40182793",
+        "station_lat": "31.27996294"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "14",
+        "station_name": "大华颐和华城（上客站）",
+        "station_lng": "121.40097767",
+        "station_lat": "31.27547905"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "15",
+        "station_name": "凯旋华庭（上客站）",
+        "station_lng": "121.40074164",
+        "station_lat": "31.27424571"
+    }
+}, {
+    "ViewUserRouteDetail": {
+        "user_route_id": "52",
+        "route_name": "家乐福万里店6号车",
+        "station_sequence": "16",
+        "station_name": "巴黎之春",
+        "station_lng": "121.40223563",
+        "station_lat": "31.26801459"
+    }
+}]
