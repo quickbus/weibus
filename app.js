@@ -38,6 +38,9 @@ app.use(express.session({
   store: new express.session.MemoryStore()
 }));
 
+app.get('/', function(req, req) {
+
+});
 
 app.enable('trust proxy');
 app.listen(process.env.PORT || 3000, function() {
