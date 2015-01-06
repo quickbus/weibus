@@ -1,11 +1,20 @@
 'use strict';
-var api = require('../lib/baidu.js');
-
+var BaiduMap = require('../lib/baidu.js');
+var BaiduMapAPI = BaiduMap.BaiduMapAPI;
 var route1 = require('./route1.json');
 var openURL = require('open');
 
 
 describe('make image for real route', function() {
+
+  var api;
+
+  before(function() {
+    api = new BaiduMapAPI({
+      ak: '1wpk9X6wAbE9D2pHZRYNhmLw',
+      sk: 'B3a0e39639fd1f554f475822989decd0'
+    });
+  })
 
   it('translate all coords to baidu coords', function(done) {
     var coords = route1.map(function(route) {
@@ -16,15 +25,13 @@ describe('make image for real route', function() {
 
     });
 
-    api.toBaiduCoorArray(coords, 'C125dcbb78c4d1e02f0404e02dd02548',
-        'B3a0e39639fd1f554f475822989decd0')
+    api.toBaiduCoorArray(coords)
       .then(function(res) {
         res.forEach(function(o, i) {
           o.name = route1[i].ViewUserRouteDetail.station_name;
           return o;
         });
-
-        openURL(api.getImageUrlx(res), function() {
+        openURL(BaiduMap.getImageUrlx(res), function() {
           done();
         });
       })

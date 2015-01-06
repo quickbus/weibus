@@ -3,46 +3,59 @@
 var baiduapi = require('../lib/baidu.js');
 var expect = require('chai').expect;
 
-describe('Baidu POI API', function() {
+describe('new api', function() {
 
-  it('should get pois ', function(done) {
-    baiduapi.getPOI(121.59935705401, 31.152478125873,
-        '1wpk9X6wAbE9D2pHZRYNhmLw')
+  var api;
+  before(function() {
+    api = new baiduapi.BaiduMapAPI({
+      ak: '1wpk9X6wAbE9D2pHZRYNhmLw',
+      sk: 'B3a0e39639fd1f554f475822989decd0'
+    });
+  });
+
+  it('shoud throw erro when no ak or sk', function() {
+    expect(function() {
+      new baiduapi.BaiduMapAPI();
+    }).to.throw('No ak or sk');
+  });
+
+  it('ok with sk ak construct', function() {
+    expect(api).to.be.ok;
+  });
+
+  it('can get baidu Cords', function(done) {
+    api.toBaiduCoorArray([{
+        lng: 121.423461,
+        lat: 31.273049
+      }, {
+        lng: 121.423461,
+        lat: 31.273020
+      }])
+      .then(function(cords) {
+        expect(cords.length).to.equal(2);
+        done();
+      }).catch(done);
+  });
+
+  it('can get baidu a cord', function(done) {
+    api.toBaiduCoordsQ({
+      lng: 121.423461,
+      lat: 31.273049
+    }).then(function(cord) {
+      done();
+    }).catch(done);
+
+  });
+
+
+  it('can get point of interesting', function(done) {
+    api.getPOI({
+        lng: 121.59935705401,
+        lat: 31.152478125873
+      })
       .then(function() {
-        done();
-      }).catch(done);
-  });
-
-});
-
-describe('baidu Coords api', function() {
-  it('can convert coord', function(done) {
-    baiduapi.toBaiduCoordsQ(121.423461, 31.273049,
-        'C125dcbb78c4d1e02f0404e02dd02548',
-        'B3a0e39639fd1f554f475822989decd0')
-      .then(function(res) {
-        expect(res).to.has.keys(['lat', 'lng']);
-        done();
-      }).catch(done);
-  });
-
-  it('can convert coords', function(done) {
-    baiduapi.toBaiduCoorArray([{
-          lng: 121.423461,
-          lat: 31.273049
-        }, {
-          lng: 121.423461,
-          lat: 31.273020
-        }], 'C125dcbb78c4d1e02f0404e02dd02548',
-        'B3a0e39639fd1f554f475822989decd0')
-      .then(function(res) {
-        expect(res).to.be.an('Array');
-        expect(res.length).to.equal(2);
         done();
       })
       .catch(done);
   });
-
-
-
 });
