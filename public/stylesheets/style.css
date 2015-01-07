@@ -1,8 +1,66 @@
-body {
-  padding: 50px;
+html, body {
+  width: 100%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+p{
+  margin: 5px;
+  font-size:10px; 
+  color:#3e3e3e;
+}
+.container {
+  margin: 0px;
+  background-color: #fff;
+}
+.main {
+  background-color: #e7e8eb;
+  border:2px #e7e8eb solid;
+  margin: 0 auto;
+  width: 95%
+}
+
+.image_content{
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: -1px}
+
+.image_content img {
+  width: 95%;
+  margin: 10px 2% 1px;
+}
+
+.title{
+  padding-bottom: 5px;
+  border-left: 5px;
+  border-bottom: 1px #e7e7eb solid;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.meta_text{
+  font-size: 10px;
+  color: #8c8c8c;
+}
+
+.ad{
+  margin: 10px;
 }
 
 a {
   color: #00B7FF;
+}
+
+
+
+
+@media screen and (min-width: 1024px) {
+  .main {
+    width: 700px;
+  }
+  .main{
+    background-color: #fff;
+  }
+
+  .container{
+    background-color: #e7e8eb;
+  }
 }
