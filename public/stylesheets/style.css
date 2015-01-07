@@ -2,65 +2,89 @@ html, body {
   width: 100%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-p{
+p {
   margin: 5px;
-  font-size:10px; 
-  color:#3e3e3e;
+  font-size: 10px;
+  color: #3e3e3e;
 }
 .container {
   margin: 0px;
-  background-color: #fff;
+  background-color: #e7e8eb;
+  position: relative;
+  margin-bottom: 35px;
 }
 .main {
-  background-color: #e7e8eb;
-  border:2px #e7e8eb solid;
+  background-color: #fff;
+  border: 2px #e7e8eb solid;
   margin: 0 auto;
-  width: 95%
+  padding: 20px;
+  width: 95%;
+  position: relative;
 }
-
-.image_content{
+.image_content {
   width: 100%;
   margin-top: 15px;
-  margin-bottom: -1px}
-
-.image_content img {
-  width: 95%;
-  margin: 10px 2% 1px;
+  border: 2px solid #0f5397;
+  border-radius: 5px;
+  margin-bottom: -1px;
+  position: relative;
 }
-
-.title{
+.image_content img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.logo {
+  position: fixed;
+  right: 10px;
+  top: 20px;
+  background-image: url(/images/logo.jpg);
+  height: 70px;
+  width: 56px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 999;
+}
+.bottom_bar {
+  position: fixed;
+  left:0px;
+  bottom: 0px;
+  height: 20px;
+  width: 100%;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  color: #fff;
+  font-size: 20px;
+}
+.title {
   padding-bottom: 5px;
   border-left: 5px;
   border-bottom: 1px #e7e7eb solid;
   font-weight: 700;
   font-size: 20px;
-}
+  color: #0f5397;
+  font-family: "黑体", Arial, Helvetica, sans-serif;
 
-.meta_text{
+}
+.meta_text {
   font-size: 10px;
   color: #8c8c8c;
 }
-
-.ad{
+.ad {
   margin: 10px;
 }
-
 a {
   color: #00B7FF;
 }
-
-
-
-
 @media screen and (min-width: 1024px) {
   .main {
     width: 700px;
   }
-  .main{
+  .main {
     background-color: #fff;
   }
-
-  .container{
+  .container {
     background-color: #e7e8eb;
   }
 }
