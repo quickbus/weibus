@@ -38,7 +38,7 @@ describe('rules', function() {
     });
   });
 
-  it('can hi and word', function(done) {
+  it('query route by nick name directly ', function(done) {
     robot.reply({
       text: 'ASB'
     }, function(err, info) {
@@ -57,6 +57,9 @@ describe('rules', function() {
     info.text = '13524677703';
     info.session = {};
     robot.reply(info, function(err, _info) {
+      if (err) {
+        return done(err);
+      }
       try {
         expect(_info.reply).to.match(/\d+:/);
       } catch (err) {
@@ -64,8 +67,12 @@ describe('rules', function() {
       }
       info.text = '2';
       robot.reply(info, function(err, _info) {
-        expect(_info.reply).to.have.keys(['title', 'picUrl', 'description', 'url']);
-        done();
+        try {
+          expect(_info.reply).to.have.keys(['title', 'picUrl', 'description', 'url']);
+          done();
+        } catch (e) {
+          done(e);
+        }
       });
     });
 
