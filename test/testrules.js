@@ -30,14 +30,6 @@ describe('rules', function() {
     });
   });
 
-  it('can hi and hi back', function() {
-    robot.reply({
-      text: 'who r u'
-    }, function(err, info) {
-      expect(info.reply).to.equal('I\'m a robot.');
-    });
-  });
-
   it('query route by nick name directly ', function(done) {
     robot.reply({
       text: 'ASB'
