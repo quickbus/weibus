@@ -43,6 +43,25 @@ describe('rules', function() {
     });
   });
 
+  it('answer to subscribe', function(done) {
+    var info = new robot.Info({
+      type: 'event',
+      param: {
+        event: 'subscribe'
+      }
+
+    });
+
+    robot.reply(info, function(err, info) {
+      if (err) {
+        return done(err);
+      }
+      expect(info.reply).to.contain('欢迎');
+      done();
+    });
+  });
+
+
   it('answer to phone numbers', function(done) {
     var info = new robot.Info();
 
