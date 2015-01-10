@@ -32,7 +32,7 @@ describe('rules', function() {
 
   it('query route by nick name directly ', function(done) {
     robot.reply({
-      text: 'ASB'
+      text: '1号'
     }, function(err, info) {
       try {
         expect(info.reply).to.have.keys(['title', 'picUrl', 'description', 'url']);
