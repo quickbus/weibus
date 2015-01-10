@@ -68,20 +68,20 @@ app.get('/detail', function(req, res) {
   }
   var key = 'route:' + routeID;
 
-  qClient.getAsync(key).
-  then(function(str) {
-    var info = JSON.parse(str);
-    res.render('detail', {
-      routeName: info.name,
-      title: info.name + '详细信息',
-      img_url: deitailPicUrlCompiler(info),
-      updateAT: info.updateAT,
-      address: info.address,
-      poi: info.poi
-    });
+  qClient.getAsync(key)
+    .then(function(str) {
+      var info = JSON.parse(str);
+      res.render('detail', {
+        routeName: info.name,
+        title: info.name + '详细信息',
+        img_url: deitailPicUrlCompiler(info),
+        updateAT: info.updateAT,
+        address: info.address,
+        poi: info.poi
+      });
 
-  }).catch(function() {
-    res.render('error');
-  });
+    }).catch(function() {
+      res.render('error');
+    });
 
 });
