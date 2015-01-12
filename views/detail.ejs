@@ -6,26 +6,40 @@
   </head>
   <body>
   <div class="container">
-    <!-- <div class="logo" /></div> -->
     <div class="main">
-    <div class="title">
-      <%= routeName %>
+      <div class="title">
+        <%= routeName %>
+      </div>
+      <div class="meta_text">
+        <span>更新时间:</span> <span><%= updateAT %></span>
+        <span><a>班车助手</a></span>
+      </div>
+      <div class="image_content">
+        <img src="<%= img_url %>" />
+        <p >班车在: <%= address %>( <%= poi %> )附近</p>
+      </div>
+      <div class="line_and_ad">
+        <div class="line">
+          <ul>
+            <li class="station station--start ">始发站</li>
+            <li class="station station--passed ">stop2 NO </li>
+            <li class="station station--current">stop3</li>
+            <li class="station station--default">stop4</li>
+            <li class="station station--default">stop5</li>
+            <li class="station station--end">终点站</li>
+          </ul>
+        </div>
+        <div class="ad">
+          <div class="image_content" style="float:left;">
+            <img src="/images/0.jpg" >
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="meta_text">
-      <span>更新时间:</span> <span><%= updateAT %></span>
-      <span><a>班车助手</a></span>
-    </div>
-    <div class="image_content">
-      <img src="<%= img_url %>" />
-      <p >班车在: <%= address %>( <%= poi %> )附近</p>
-    </div>
-    <div id="ads_area">
-      <!-- <div class="ad"> 我是一个广告</div> -->
-    </div>
-
   </div>
   <div class="bottom_bar">
     欢迎使用巴士助手
   </div>
+<script src="http://192.168.31.164:35729/livereload.js"></script>
   </body>
 </html>
