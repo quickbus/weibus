@@ -1,23 +1,12 @@
 'use strict';
 /* global require, console*/
-
-
 var express = require('express');
 var robot = require('weixin-robot');
 var ruler = require('./lib/rules.js');
 var path = require('path');
-var lo = require('lodash');
-var Promise = require('bluebird');
-var redis = require('redis');
-
-var qClient = Promise.promisifyAll(redis.createClient());
-
+var detail = require('./route/detail.js');
 
 var app = express();
-
-
-var templates = require('./lib/temmplateConfig.json');
-var deitailPicUrlCompiler = lo.template(templates.detailTemplate);
 
 ruler(robot);
 
@@ -51,38 +40,14 @@ app.get('/', function(req, res) {
 
 });
 
+
+detail(app);
 app.enable('trust proxy');
 app.listen(process.env.PORT || 3000, function() {
   console.log('robot on~');
 });
 
+
 app.get('/index', function(req, res) {
   res.send('index');
-});
-
-app.get('/detail', function(req, res) {
-  var routeID = req.query.id || '';
-  if (routeID === '') {
-    res.render('error');
-    return;
-  }
-  var key = 'route:' + routeID;
-
-  qClient.getAsync(key)
-    .then(function(str) {
-      var info = JSON.parse(str);
-      res.render('detail', {
-        routeName: info.name,
-        title: info.name + '详细信息',
-        img_url: deitailPicUrlCompiler(info),
-        updateAT: info.updateAT,
-        address: info.address,
-        poi: info.poi,
-        product:process.env.PORT
-      });
-
-    }).catch(function() {
-      res.render('error');
-    });
-
 });

@@ -35,13 +35,12 @@ describe('make image for real route', function() {
           o.name = route1[i].ViewUserRouteDetail.station_name;
           return o;
         });
-        console.log(res[0]);
 
         var map = new MapImage({
           route_stations: res
         });
 
-        var url = map.showMarker(res[0]);
+        var url = map.showMarker(res[3]);
 
         expect(url).to.contain('label');
         expect(url).to.contain('labelStyles');
