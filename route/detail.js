@@ -25,15 +25,38 @@ module.exports = function(app) {
     qClient.getAsync(key)
       .then(function(str) {
         var info = JSON.parse(str);
-        var url = route1MapImage.showMarker({
+        var marker = {
           lng: info.lng,
           lat: info.lat
+        };
+        var url = route1MapImage.showMarker(marker);
+
+        var nearestIndex = route1MapImage._nearestLabelIndex(marker);
+
+        var stations = route1MapImage.labels.map(function(lab, index) {
+          var cssClass;
+          if (index === nearestIndex) {
+            cssClass = 'station station--current';
+          } else if (index > nearestIndex) {
+            cssClass = 'station station--default';
+          } else {
+            cssClass = 'station station--passed';
+          }
+
+          return {
+            name: (index + 1) + ':' + lab.name,
+            cssClass: cssClass
+          };
+
         });
-        console.log(url);
+        stations[0].cssClass = 'station station--start';
+        stations[stations.length - 1].cssClass = 'station station--end';
+
         res.render('detail', {
           routeName: info.name,
           title: info.name + '详细信息',
           img_url: url,
+          stations: stations,
           updateAT: info.updateAT,
           address: info.address,
           poi: info.poi,

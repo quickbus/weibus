@@ -21,12 +21,10 @@
     <div class="line_and_ad">
       <div class="line">
         <ul>
-          <li class="station station--start ">始发站</li>
-          <li class="station station--passed ">stop2 NO </li>
-          <li class="station station--current">stop3</li>
-          <li class="station station--default">stop4</li>
-            <li class="station station--default">stop5</li>
-            <li class="station station--end">终点站</li>
+        <% function stationItem(sta) {%>
+            <li class="<%= sta.cssClass%>"> <%= sta.name %></li>
+        <% } %>
+        <% stations.map(stationItem) %>
           </ul>
         </div>
         <div class="ad">
