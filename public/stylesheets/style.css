@@ -34,6 +34,11 @@ p {
   max-width: 100%;
   height: auto;
 }
+.image_content p{
+  font-size: 28px;
+  color:#0f5397;
+}
+
 .logo {
   position: fixed;
   right: 10px;
@@ -49,26 +54,27 @@ p {
   position: fixed;
   left:0px;
   bottom: 0px;
-  height: 20px;
+  height: 30px;
   width: 100%;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 10px;
   color: #fff;
-  font-size: 20px;
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 .title {
   padding-bottom: 5px;
   border-left: 5px;
   border-bottom: 1px #e7e7eb solid;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 40px;
   color: #0f5397;
   font-family: "黑体", Arial, Helvetica, sans-serif;
 
 }
 .meta_text {
-  font-size: 10px;
+  font-size: 30px;
   color: #8c8c8c;
 }
 .ad {
