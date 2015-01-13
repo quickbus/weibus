@@ -28,7 +28,6 @@ describe('make image for real route', function() {
 
   it.only('translate all coords to baidu coords', function(done) {
 
-
     api.toBaiduCoorArray(coords)
       .then(function(res) {
         res.forEach(function(o, i) {
@@ -44,7 +43,7 @@ describe('make image for real route', function() {
 
         expect(url).to.contain('label');
         expect(url).to.contain('labelStyles');
-        console.log(url);
+        expect(url.length).to.below(4000);
         openURL(url, function() {
           done();
         });
