@@ -77,7 +77,8 @@ app.get('/detail', function(req, res) {
         img_url: deitailPicUrlCompiler(info),
         updateAT: info.updateAT,
         address: info.address,
-        poi: info.poi
+        poi: info.poi,
+        product:process.env.PORT
       });
 
     }).catch(function() {
