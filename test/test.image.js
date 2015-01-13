@@ -41,7 +41,7 @@ describe('make image for real route', function() {
           route_stations: res
         });
 
-        var url = map.showMarker(res[0]);
+        var url = map.showMarker(res[3]);
 
         expect(url).to.contain('label');
         expect(url).to.contain('labelStyles');
