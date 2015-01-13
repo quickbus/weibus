@@ -1,29 +1,33 @@
 'use strict';
 var BaiduMap = require('../lib/baidu.js');
+var MapImage = require('../lib/MapImage.js');
+var expect = require('chai').expect;
 var BaiduMapAPI = BaiduMap.BaiduMapAPI;
 var route1 = require('./route1.json');
 var openURL = require('open');
-
+var MapImage = require('../lib/MapImage.js');
 
 describe('make image for real route', function() {
-
   var api;
+  var coords;
 
   before(function() {
     api = new BaiduMapAPI({
       ak: '1wpk9X6wAbE9D2pHZRYNhmLw',
       sk: 'B3a0e39639fd1f554f475822989decd0'
     });
-  })
 
-  it('translate all coords to baidu coords', function(done) {
-    var coords = route1.map(function(route) {
+    coords = route1.map(function(route) {
       return {
         lng: route.ViewUserRouteDetail.station_lng,
         lat: route.ViewUserRouteDetail.station_lat
       };
 
     });
+  });
+
+  it.only('translate all coords to baidu coords', function(done) {
+
 
     api.toBaiduCoorArray(coords)
       .then(function(res) {
@@ -31,7 +35,18 @@ describe('make image for real route', function() {
           o.name = route1[i].ViewUserRouteDetail.station_name;
           return o;
         });
-        openURL(BaiduMap.getImageUrlx(res), function() {
+        console.log(res[0]);
+
+        var map = new MapImage({
+          route_stations: res
+        });
+
+        var url = map.showMarker(res[0]);
+
+        expect(url).to.contain('label');
+        expect(url).to.contain('labelStyles');
+        console.log(url);
+        openURL(url, function() {
           done();
         });
       })
