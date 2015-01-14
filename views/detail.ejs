@@ -39,7 +39,12 @@
     欢迎使用巴士助手
   </div>
   <% if (!product) { %>
-  <script src="http://127.0.0.1:35729/livereload.js"></script>
+  <script type="text/javascript">
+    var script = document.createElement("script")
+    script.type = 'text/javascript';
+    script.src = '//' + window.location.hostname + ':35729/livereload.js';
+    document.getElementsByTagName("head")[0].appendChild(script);
+  </script>
   <% } %>
   </body>
 </html>
