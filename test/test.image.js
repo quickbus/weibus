@@ -26,7 +26,7 @@ describe('make image for real route', function() {
     });
   });
 
-  it('translate all coords to baidu coords', function(done) {
+  it.only('translate all coords to baidu coords', function(done) {
 
     api.toBaiduCoorArray(coords)
       .then(function(res) {
