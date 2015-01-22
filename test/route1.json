@@ -1,172 +1,192 @@
-[{
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "1",
-        "station_name": "大华路455弄",
-        "station_lng": "121.41029030",
-        "station_lat": "31.27331497"
+[
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "1",
+            "station_name": "大华路455弄",
+            "station_lng": "121.41032517",
+            "station_lat": "31.27286564"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "2",
+            "station_name": "大华二村",
+            "station_lng": "121.41192377",
+            "station_lat": "31.27433282"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "3",
+            "station_name": "新沪路1060弄",
+            "station_lng": "121.41377181",
+            "station_lat": "31.27530482"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "4",
+            "station_name": "文华苑（大华三路）",
+            "station_lng": "121.41268551",
+            "station_lat": "31.27751471"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "5",
+            "station_name": "滨江雅苑（大华三路）",
+            "station_lng": "121.40802920",
+            "station_lat": "31.27794567"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "6",
+            "station_name": "康华苑（华灵路）",
+            "station_lng": "121.40471667",
+            "station_lat": "31.28128331"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "7",
+            "station_name": "康华苑（真金路）",
+            "station_lng": "121.40185207",
+            "station_lat": "31.28217730"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "8",
+            "station_name": "738终点站",
+            "station_lng": "121.40227586",
+            "station_lat": "31.28519388"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "9",
+            "station_name": "行知路635弄",
+            "station_lng": "121.40491784",
+            "station_lat": "31.28534517"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "10",
+            "station_name": "行知路569弄",
+            "station_lng": "121.40732110",
+            "station_lat": "31.28540018"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "11",
+            "station_name": "行知路381弄",
+            "station_lng": "121.40978873",
+            "station_lat": "31.28547353"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "12",
+            "station_name": "北华苑（大华路）",
+            "station_lng": "121.41177088",
+            "station_lat": "31.28318131"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "13",
+            "station_name": "文华苑（华灵路）",
+            "station_lng": "121.41360015",
+            "station_lat": "31.28141626"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "14",
+            "station_name": "华灵路880弄",
+            "station_lng": "121.41765565",
+            "station_lat": "31.28119162"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "15",
+            "station_name": "华灵路邮局（大华三路口）",
+            "station_lng": "121.41828865",
+            "station_lat": "31.27688201"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "16",
+            "station_name": "南华苑（华灵路）",
+            "station_lng": "121.41916841",
+            "station_lat": "31.27306279"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "17",
+            "station_name": "灵石路1669弄",
+            "station_lng": "121.41826719",
+            "station_lat": "31.26788620"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "18",
+            "station_name": "中浩云花苑（富平路）",
+            "station_lng": "121.41229659",
+            "station_lat": "31.26538263"
+        }
+    },
+    {
+        "ViewUserRouteDetail": {
+            "user_route_id": "54",
+            "route_name": "家乐福万里店1号班车",
+            "station_sequence": "19",
+            "station_name": "终点",
+            "station_lng": "121.40654594",
+            "station_lat": "31.26968818"
+        }
     }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "2",
-        "station_name": "大华二村",
-        "station_lng": "121.41211420",
-        "station_lat": "31.27427781"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "3",
-        "station_name": "新沪路1060弄",
-        "station_lng": "121.41371280",
-        "station_lat": "31.27514894"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "4",
-        "station_name": "文华苑（大华三路）",
-        "station_lng": "121.41220272",
-        "station_lat": "31.27756972"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "5",
-        "station_name": "滨江雅苑（大华三路）",
-        "station_lng": "121.40795410",
-        "station_lat": "31.27793650"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "6",
-        "station_name": "康华苑（华灵路）",
-        "station_lng": "121.40491784",
-        "station_lat": "31.28131082"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "7",
-        "station_name": "康华苑（真金路）",
-        "station_lng": "121.40189230",
-        "station_lat": "31.28209019"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "8",
-        "station_name": "738终点站",
-        "station_lng": "121.40328705",
-        "station_lat": "31.28511595"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "9",
-        "station_name": "行知路635弄",
-        "station_lng": "121.40563667",
-        "station_lat": "31.28522597"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "10",
-        "station_name": "行知路569弄",
-        "station_lng": "121.40777171",
-        "station_lat": "31.28526265"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "11",
-        "station_name": "行知路381弄",
-        "station_lng": "121.40905917",
-        "station_lat": "31.28530849"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "12",
-        "station_name": "北华苑（大华路）",
-        "station_lng": "121.41155899",
-        "station_lat": "31.28207186"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "13",
-        "station_name": "文华苑（华灵路）",
-        "station_lng": "121.41360819",
-        "station_lat": "31.28132916"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "14",
-        "station_name": "华灵路880弄",
-        "station_lng": "121.41791046",
-        "station_lat": "31.28097156"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "15",
-        "station_name": "华灵路邮局（大华三路口）",
-        "station_lng": "121.41826451",
-        "station_lat": "31.27688201"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "16",
-        "station_name": "南华苑（华灵路）",
-        "station_lng": "121.41919792",
-        "station_lat": "31.27303070"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "17",
-        "station_name": "灵石路1669弄",
-        "station_lng": "121.41840398",
-        "station_lat": "31.26802376"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "18",
-        "station_name": "中浩云花苑（富平路）",
-        "station_lng": "121.41215175",
-        "station_lat": "31.26540097"
-    }
-}, {
-    "ViewUserRouteDetail": {
-        "user_route_id": "51",
-        "route_name": "家乐福万里店1号车",
-        "station_sequence": "19",
-        "station_name": "家乐福",
-        "station_lng": "121.40655130",
-        "station_lat": "31.27029342"
-    }
-}]
+]
