@@ -1,16 +1,16 @@
 'use strict';
 var Promise = require('bluebird');
 var redis = require('redis');
-var qClient = Promise.promisifyAll(redis.createClient());
 var MapImage = require('../lib/MapImage.js');
-var route1config = require('../lib/Route1.json');
+var BusAPI = require('../lib/BusAPI.js');
+var memoFactory = require('../lib/RedisMemo.js');
 
 
-
-var route1MapImage = new MapImage({
-  route_stations: route1config
-});
-
+var qClient = Promise.promisifyAll(redis.createClient());
+var getStations = memoFactory({
+  prefix:'stations:',
+  client: qClient
+},BusAPI.getStations);
 
 module.exports = function(app) {
 
@@ -29,42 +29,51 @@ module.exports = function(app) {
           lng: info.lng,
           lat: info.lat
         };
-        var url = route1MapImage.showMarker(marker);
 
-        var nearestIndex = route1MapImage._nearestLabelIndex(marker);
+        return getStations(routeID)
+          .then(function(route_stations) {
 
-        var stations = route1MapImage.labels.map(function(lab, index) {
-          var cssClass;
-          if (index === nearestIndex) {
-            cssClass = 'station station--current';
-          } else if (index > nearestIndex) {
-            cssClass = 'station station--default';
-          } else {
-            cssClass = 'station station--passed';
-          }
+            var mapImage = new MapImage({route_stations:route_stations});
 
-          return {
-            name: (index + 1) + ':' + lab.name,
-            cssClass: cssClass
-          };
+            var url = mapImage.showMarker(marker);
+            var nearestIndex = mapImage._nearestLabelIndex(
+              marker);
 
-        });
-        stations[0].cssClass = 'station station--start';
-        stations[stations.length - 1].cssClass = 'station station--end';
+            var stations = mapImage.labels.map(function(lab,
+              index) {
+              var cssClass;
+              if (index === nearestIndex) {
+                cssClass = 'station station--current';
+              } else if (index > nearestIndex) {
+                cssClass = 'station station--default';
+              } else {
+                cssClass = 'station station--passed';
+              }
 
-        res.render('detail', {
-          routeName: info.name,
-          title: info.name + '详细信息',
-          img_url: url,
-          stations: stations,
-          updateAT: info.updateAT,
-          address: info.address,
-          poi: info.poi,
-          product: process.env.PORT
-        });
+              return {
+                name: (index + 1) + ':' + lab.name,
+                cssClass: cssClass
+              };
 
+            });
+            stations[0].cssClass = 'station station--start';
+            stations[stations.length - 1].cssClass =
+              'station station--end';
+
+            res.render('detail', {
+              routeName: info.name,
+              title: info.name + '详细信息',
+              img_url: url,
+              stations: stations,
+              updateAT: info.updateAT,
+              address: info.address,
+              poi: info.poi,
+              product: process.env.PORT
+            });
+
+          });
       }).catch(function(err) {
-        console.log(err);
+        console.log(err,err.stack);
         res.render('error');
       });
 
