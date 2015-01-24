@@ -23,7 +23,7 @@ describe('quickbus API',function  () {
     var func = Memo({prefix:'stations:'},API.getStations);
 
     func(routeID)
-      .then(function(stations){
+      .then(function(){
       })
       .done(done);
 
