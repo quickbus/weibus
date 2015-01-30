@@ -51,7 +51,7 @@ module.exports = function(app) {
               }
 
               return {
-                name: (index + 1) + ':' + lab.name,
+                name:lab.name,
                 cssClass: cssClass
               };
 
