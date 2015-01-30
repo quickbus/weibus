@@ -21,6 +21,9 @@
   },
   "devDependencies": {
     "chai": "~1.9.1",
-    "open": "0.0.5"
+    "open": "0.0.5",
+    "gulp": "~3.8.10",
+    "gulp-util": "~3.0.2",
+    "gulp-less": "~2.0.1"
   }
 }
