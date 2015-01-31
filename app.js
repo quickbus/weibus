@@ -20,18 +20,18 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(express.logger());
 app.use(express.favicon());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
-app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.logger('dev'));
 app.use(express.cookieParser());
 app.use(express.session({
   secret: 'e4069e23bc38c7388810dfd60feec6ab',
   store: new express.session.MemoryStore()
 }));
+app.use(app.router);
 
 
 app.get('/', function(req, res) {
