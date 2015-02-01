@@ -96,6 +96,7 @@
                 "after":true,
                 "inject":true,
                 "expect":true,
-                "env":true
+                "env":true,
+                "Promise":true
             } // additional predefined global variables
 }
