@@ -35,7 +35,7 @@ describe('rules', function() {
       text: '1号'
     }, function(err, info) {
       try {
-        expect(info.reply).to.have.keys(['title', 'picUrl', 'description', 'url']);
+        expect(info.reply).to.have.length(2);
         done();
       } catch (e) {
         done(e);
@@ -79,7 +79,7 @@ describe('rules', function() {
       info.text = '2';
       robot.reply(info, function(err, _info) {
         try {
-          expect(_info.reply).to.have.keys(['title', 'picUrl', 'description', 'url']);
+          expect(_info.reply).to.have.length(2);
           done();
         } catch (e) {
           done(e);

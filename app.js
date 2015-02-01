@@ -42,13 +42,15 @@ app.get('/', function(req, res) {
 });
 
 
-detail(app);
 app.enable('trust proxy');
-app.listen(process.env.PORT || 3000, function() {
-  console.log('robot on~');
-});
 
+detail(app);
 
 app.get('/index', function(req, res) {
   res.send('index');
+});
+
+
+app.listen(process.env.PORT || 3000, function() {
+  console.log('robot on~');
 });
