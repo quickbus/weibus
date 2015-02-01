@@ -237,6 +237,10 @@ li {
   height: 100%;
   border-radius: 5px;
 }
+#ad-area .more a {
+  margin-top: 30px;
+  font-size: 30px;
+}
 @media screen and (min-width: 1024px) {
   .line ul li {
     width: 51.2;
