@@ -20,6 +20,7 @@ p {
   margin: 0;
   background-color: #e7e8eb;
   position: relative;
+  margin-bottom: 50px;
 }
 .main {
   width: 95%;
