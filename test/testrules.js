@@ -25,14 +25,14 @@ describe('rules', function() {
       if (err) {
         done(err);
       }
-      expect(info.reply).to.contain('如:1');
+      expect(info.reply).to.contain('如:5');
       done();
     });
   });
 
   it('query route by nick name directly ', function(done) {
     robot.reply({
-      text: '1号'
+      text: '5号'
     }, function(err, info) {
       try {
         expect(info.reply).to.have.length(2);
