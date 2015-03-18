@@ -39,7 +39,7 @@ describe('make image for real route', function() {
           route_stations: res
         });
 
-        var url = map.showMarker(res[3]);
+        var url = map.showMarker(res[3], 17);
 
         expect(url).to.contain('label');
         expect(url).to.contain('labelStyles');
@@ -50,4 +50,30 @@ describe('make image for real route', function() {
       })
       .catch(done);
   });
+
+  it('translate all coords to baidu coords with index', function(done) {
+
+    api.toBaiduCoorArray(coords)
+      .then(function(res) {
+        res.forEach(function(o, i) {
+          o.name = route1[i].ViewUserRouteDetail.station_name;
+          return o;
+        });
+
+        var map = new MapImage({
+          route_stations: res
+        });
+
+        var url = map.showMarkerWithIndex(res[4], 4, 17);
+
+        expect(url).to.contain('label');
+        expect(url).to.contain('labelStyles');
+        expect(url.length).to.below(4000);
+        openURL(url, function() {
+          done();
+        });
+      })
+      .catch(done);
+  });
+
 });
