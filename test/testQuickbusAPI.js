@@ -32,8 +32,8 @@ describe('quickbus API', function() {
       .then(function(reses) {
         var passedStations = JSON.parse(reses[1]);
         expect(passedStations.length).to.above(0);
-        done();
-      }).catch(done);
+      }).done(done);
+
 
   });
 
