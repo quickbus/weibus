@@ -51,6 +51,30 @@ app.get('/index', function(req, res) {
 });
 
 
+
+var API = require('./lib/BusAPI.js');
+var BaiduMapAPI = require('./lib/baidu.js').BaiduMapAPI;
+var mapAPI = new BaiduMapAPI({
+  ak: '1wpk9X6wAbE9D2pHZRYNhmLw',
+  sk: 'B3a0e39639fd1f554f475822989decd0'
+});
+
+app.get('/points', function(req, res) {
+
+  var name = req.param('name');
+  console.log('logs', name);
+  API.getRoutePointsByName(name)
+    .then(function(points) {
+      return mapAPI.toBaiduCoorArray(points);
+    }).then(function(baiduPoints) {
+      res.json(baiduPoints);
+    }, function(err) {
+      res.json(500, err);
+    });
+
+});
+
+
 app.listen(process.env.PORT || 3000, function() {
   console.log('robot on~');
 });

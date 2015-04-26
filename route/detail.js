@@ -78,6 +78,8 @@ module.exports = function(app) {
 
                   return {
                     name: lab.name,
+                    lat: lab.pos.lat,
+                    lng: lab.pos.lng,
                     cssClass: cssClass
                   };
 
@@ -86,15 +88,16 @@ module.exports = function(app) {
                 stations[stations.length - 1].cssClass =
                   'station station--end';
 
-                res.render('detail', {
+                console.log('logs', stations);
+                res.render('detailx', {
                   routeName: info.name,
                   title: info.name + '详细信息',
-                  img_url: url,
+                  info: info,
                   stations: stations,
                   updateAT: info.updateAT,
                   address: info.address,
                   poi: info.poi,
-                  product: process.env.PORT
+                  product: process.env.PORT,
                 });
               });
           });
