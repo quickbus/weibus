@@ -30,7 +30,7 @@ describe('rules', function() {
     });
   });
 
-  it.only('query route by nick name directly ', function(done) {
+  it('query route by nick name directly ', function(done) {
     robot.reply({
       text: '5号'
     }, function(err, info) {

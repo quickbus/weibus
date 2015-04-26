@@ -89,7 +89,7 @@ module.exports = function(app) {
                   'station station--end';
 
                 console.log('logs', stations);
-                res.render('detailx', {
+                res.render('detail', {
                   routeName: info.name,
                   title: info.name + '详细信息',
                   info: info,
