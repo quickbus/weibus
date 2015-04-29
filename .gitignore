@@ -2,3 +2,5 @@ node_modules
 .idea
 *.rdb
 .DS_Store
+*.rar
+*.zip
