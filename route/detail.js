@@ -88,8 +88,9 @@ module.exports = function(app) {
                 stations[stations.length - 1].cssClass =
                   'station station--end';
 
-                res.render('detailx', {
+                res.render('detail', {
                   routeName: info.name,
+                  img_url: url,
                   title: info.name + '详细信息',
                   info: info,
                   stations: stations,

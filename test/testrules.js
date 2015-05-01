@@ -2,6 +2,7 @@
 var expect = require('chai').expect;
 var robot = require('weixin-robot');
 var ruler = require('../lib/rules.js');
+var debug = require('debug')('weibus');
 
 describe('rules', function() {
 
@@ -36,6 +37,7 @@ describe('rules', function() {
     }, function(err, info) {
       try {
         expect(info.reply).to.have.length(2);
+        debug('replies', info.reply);
         done();
       } catch (e) {
         done(e);

@@ -23,7 +23,7 @@ p {
   margin-bottom: 50px;
 }
 .main {
-  width: 95%;
+  width: 90%;
   height: 100%;
   border: 2px #e7e8eb solid;
   margin: 0 auto;
@@ -33,7 +33,6 @@ p {
   margin-bottom: 60px;
 }
 .image_content {
-  width: 100%;
   margin-top: 15px;
   border: 3px solid #0f5397;
   border-radius: 5px;
