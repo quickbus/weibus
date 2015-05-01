@@ -1,10 +1,11 @@
 'use strict';
 var Promise = require('bluebird');
 var redis = require('redis');
-var MapImage = require('../lib/MapImage.js');
 var BusAPI = require('../lib/BusAPI.js');
 var memoFactory = require('../lib/RedisMemo.js');
-var formpost = require('../lib/formpost.js');
+
+var generateStaticMap = require('../lib/staticMap.js');
+
 
 var qClient = Promise.promisifyAll(redis.createClient());
 var getStations = memoFactory({
@@ -30,76 +31,64 @@ module.exports = function(app) {
           lat: info.lat
         };
 
-        return getStations(routeID)
-          .then(function(route_stations) {
+        var mapImagePromise = generateStaticMap({
+          id: routeID,
+          name: info.name
+        });
 
-            var mapImage = new MapImage({
-              route_stations: route_stations
+        return Promise.all([
+            1,
+            // passedStationsPromise,
+            mapImagePromise
+          ])
+          .then(function(args) {
+            var passedIndex = args[0] || -1;
+            var mapImage = args[1];
+            var url;
+            var nearestIndex;
+
+            var stations = mapImage.labels.map(function(lab,
+              index) {
+              var cssClass;
+              if (index === nearestIndex) {
+                cssClass = 'station station--current';
+              } else if (index > nearestIndex) {
+                cssClass = 'station station--default';
+              } else {
+                cssClass = 'station station--passed';
+              }
+
+              return {
+                name: lab.name,
+                lat: lab.pos.lat,
+                lng: lab.pos.lng,
+                cssClass: cssClass
+              };
             });
+            stations[0].cssClass = 'station station--start';
+            stations[stations.length - 1].cssClass =
+              'station station--end';
 
-            return formpost(
-                'http://115.29.204.94/ViewRoutePassedStations/wechat_passed_stations_by_name', {
-                  'data[route_name]': info.name,
-                  'data[minutes_elapsed]': 30
-                })
-              .then(function(reses) {
-                var passedStations = JSON.parse(reses[1]);
-                if (passedStations.length === 0) {
-                  return -1;
-                }
+            if (passedIndex === -1) {
+              url = mapImage.showMarker(marker);
+              nearestIndex = mapImage._nearestLabelIndex(
+                marker);
+            } else {
+              url = mapImage.showMarkerWithIndex(marker, passedIndex);
+              nearestIndex = passedIndex;
+            }
 
-                return parseInt(passedStations[0].ViewRoutePassedStation
-                  .station_sequence) - 1;
-              }, function() {
-                return -1;
-              })
-              .then(function(index) {
-                var url;
-                var nearestIndex;
-                if (index === -1) {
-                  url = mapImage.showMarker(marker);
-                  nearestIndex = mapImage._nearestLabelIndex(
-                    marker);
-                } else {
-                  url = mapImage.showMarkerWithIndex(marker, index);
-                  nearestIndex = index;
-                }
-
-                var stations = mapImage.labels.map(function(lab,
-                  index) {
-                  var cssClass;
-                  if (index === nearestIndex) {
-                    cssClass = 'station station--current';
-                  } else if (index > nearestIndex) {
-                    cssClass = 'station station--default';
-                  } else {
-                    cssClass = 'station station--passed';
-                  }
-
-                  return {
-                    name: lab.name,
-                    lat: lab.pos.lat,
-                    lng: lab.pos.lng,
-                    cssClass: cssClass
-                  };
-
-                });
-                stations[0].cssClass = 'station station--start';
-                stations[stations.length - 1].cssClass =
-                  'station station--end';
-
-                res.render('detail', {
-                  routeName: info.name,
-                  img_url: url,
-                  title: info.name + '详细信息',
-                  info: info,
-                  stations: stations,
-                  updateAT: info.updateAT,
-                  address: info.address,
-                  poi: info.poi,
-                  product: process.env.PORT,
-                });
-              });
+            res.render('detail', {
+              routeName: info.name,
+              img_url: url,
+              title: info.name + '详细信息',
+              info: info,
+              stations: stations,
+              updateAT: info.updateAT,
+              address: info.address,
+              poi: info.poi,
+              product: process.env.PORT,
+            });
           });
       }).catch(function(err) {
         console.log(err, err.stack);
