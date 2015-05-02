@@ -1,17 +1,41 @@
 'use strict';
 var Promise = require('bluebird');
 var redis = require('redis');
-var BusAPI = require('../lib/BusAPI.js');
 var memoFactory = require('../lib/RedisMemo.js');
-
+var formpost = require('../lib/formpost.js');
 var generateStaticMap = require('../lib/staticMap.js');
 
 
 var qClient = Promise.promisifyAll(redis.createClient());
-var getStations = memoFactory({
-  prefix: 'stations:',
-  client: qClient
-}, BusAPI.getStations);
+
+
+var getPassedStations = memoFactory({
+  prefix: 'passed',
+  client: qClient,
+  expire: 60
+}, function(name) {
+
+  return formpost(
+      'http://115.29.204.94/ViewRoutePassedStations/wechat_passed_stations_by_name', {
+        'data[route_name]': name,
+        'data[minutes_elapsed]': 30
+      })
+    .then(function(reses) {
+
+      var passedStations = JSON.parse(reses[1]);
+      if (passedStations.length === 0) {
+        return -1;
+      }
+
+      return parseInt(passedStations[0]
+        .ViewRoutePassedStation
+        .station_sequence) - 1;
+    }, function() {
+      return -1;
+    });
+});
+
+
 
 module.exports = function(app) {
 
@@ -37,8 +61,7 @@ module.exports = function(app) {
         });
 
         return Promise.all([
-            1,
-            // passedStationsPromise,
+            getPassedStations(info.name),
             mapImagePromise
           ])
           .then(function(args) {
