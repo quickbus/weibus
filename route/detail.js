@@ -78,9 +78,14 @@ module.exports = function(app) {
               nearestIndex = passedIndex;
             }
 
+            mapImage
+              .zoomTo(17)
+              .centerTo(marker);
+
+
             res.render('detail', {
               routeName: info.name,
-              img_url: url,
+              img_url: mapImage.toURL(),
               title: info.name + '详细信息',
               info: info,
               stations: stations,

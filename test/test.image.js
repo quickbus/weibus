@@ -64,7 +64,15 @@ describe('make image for real route', function() {
           route_stations: res
         });
 
-        var url = map.showMarkerWithIndex(res[4], 4, 17);
+        var url = map
+          .width(360)
+          .height(200)
+          .zoomTo(17)
+          .centerTo(res[4])
+          .markAt(res[4])
+          .showMarkerWithIndex(res[4], 4);
+
+        url = map.toURL();
 
         expect(url).to.contain('label');
         expect(url).to.contain('labelStyles');
