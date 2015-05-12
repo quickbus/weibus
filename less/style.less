@@ -41,6 +41,8 @@ p {
   border-radius: 5px;
   margin-bottom: -1px;
   position: relative;
+  padding: 0 5px;
+
 }
 .image_content img {
   width: 100%;
@@ -92,8 +94,21 @@ p {
   color: #8c8c8c;
 }
 .ad {
-  width: 70%;
   margin: 10px auto;
+  font-size: 0;
+
+  .image_content {
+    width: 33%;
+    display: inline-block;
+    padding: 0 5px;
+    box-sizing: border-box;
+    border:0;
+
+    img {
+      border:2px red dashed;
+    }
+  }
+
 }
 a {
   color: #00B7FF;
@@ -138,7 +153,6 @@ li{
     vertical-align:top;
     display: inline-block;
     margin:10px auto;
-    width: 60%;
   }
 
   .base-station{
@@ -276,67 +290,6 @@ li{
   }
 }
 
-
-@media screen and (min-width: 1024px) {
-
-  .line{
-    @col-width:1024/20px;
-
-    ul li{
-      width: @col-width;
-      height: 200px;
-      font-size: @col-width;
-    }
-
-  }
-
-  .main {
-    padding: 20px;
-   }
-  .container {
-    width: 800px;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #e7e8eb;
-  }
-}
-@media screen and (max-width: 800px){
-
-  .line{
-    @col-width:18px;
-
-    ul li{
-      width: @col-width;
-      height: 200px;
-      font-size: @col-width;
-    }
-
-  }
-
-  .station{
-    font-size: 10px;
-  }
-
-  .meta_text{
-    font-size: 25px;
-  }
-
-  .bottom_bar{
-    height: 25px;
-    font-size: 25px;
-  }
-}
-
-@media screen and (max-width: 400px){
-  .title{
-    font-size: 30px;
-  }
-  .meta_text{
-    font-size: 17px;
-  }
-  .image_content p {
-    font-size:20px;
-  }
-
-}
+@import "gt1024.less";
+@import "lt800.less";
+@import "lt400.less";
