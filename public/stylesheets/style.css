@@ -99,7 +99,8 @@ p {
   border: 0;
 }
 .ad .image_content img {
-  border: 2px red dashed;
+  border: 3px #0f5397 dashed;
+  border-radius: 10px;
 }
 a {
   color: #00B7FF;
