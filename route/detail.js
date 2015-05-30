@@ -13,14 +13,14 @@ var getPassedStations = memoFactory({
   prefix: 'passed',
   client: qClient,
   expire: 60
-}, function(name) {
+}, function (name) {
 
   return formpost(
       'http://115.29.204.94/ViewRoutePassedStations/wechat_passed_stations_by_name', {
         'data[route_name]': name,
         'data[minutes_elapsed]': 30
       })
-    .then(function(reses) {
+    .then(function (reses) {
 
       var passedStations = JSON.parse(reses[1]);
       if (passedStations.length === 0) {
@@ -30,16 +30,16 @@ var getPassedStations = memoFactory({
       return parseInt(passedStations[0]
         .ViewRoutePassedStation
         .station_sequence) - 1;
-    }, function() {
+    }, function () {
       return -1;
     });
 });
 
 
 
-module.exports = function(app) {
+module.exports = function (app) {
 
-  app.get('/detail', function(req, res) {
+  app.get('/detail', function (req, res) {
     var routeID = req.query.id || '';
     if (routeID === '') {
       res.render('error');
@@ -48,7 +48,7 @@ module.exports = function(app) {
     var key = 'route:' + routeID;
 
     qClient.getAsync(key)
-      .then(function(str) {
+      .then(function (str) {
         var info = JSON.parse(str);
         var marker = {
           lng: info.lng,
@@ -64,13 +64,13 @@ module.exports = function(app) {
             getPassedStations(info.name),
             mapImagePromise
           ])
-          .then(function(args) {
+          .then(function (args) {
             var passedIndex = args[0] || -1;
             var mapImage = args[1];
             var url;
             var nearestIndex;
 
-            var stations = mapImage.labels.map(function(lab,
+            var stations = mapImage.labels.map(function (lab,
               index) {
               var cssClass;
               if (index === nearestIndex) {
@@ -102,7 +102,9 @@ module.exports = function(app) {
             }
 
             mapImage
-              .zoomTo(17)
+              .height(500)
+              .width(800)
+              .zoomTo(16)
               .centerTo(marker);
 
 
@@ -118,7 +120,7 @@ module.exports = function(app) {
               product: process.env.PORT,
             });
           });
-      }).catch(function(err) {
+      }).catch(function (err) {
         console.log(err, err.stack);
         res.render('error');
       });
