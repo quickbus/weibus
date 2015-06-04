@@ -70,8 +70,16 @@ module.exports = function (app) {
             var url;
             var nearestIndex;
 
-            var stations = mapImage.labels.map(function (lab,
-              index) {
+            if (passedIndex === -1) {
+              url = mapImage.showMarker(marker);
+              nearestIndex = mapImage._nearestLabelIndex(
+                marker);
+            } else {
+              url = mapImage.showMarkerWithIndex(marker, passedIndex);
+              nearestIndex = passedIndex;
+            }
+
+            var stations = mapImage.labels.map(function (lab, index) {
               var cssClass;
               if (index === nearestIndex) {
                 cssClass = 'station station--current';
@@ -88,18 +96,11 @@ module.exports = function (app) {
                 cssClass: cssClass
               };
             });
-            stations[0].cssClass = 'station station--start';
-            stations[stations.length - 1].cssClass =
-              'station station--end';
+            // stations[0].cssClass = 'station station--start';
+            stations[stations.length - 1].cssClass = 'station station--end';
 
-            if (passedIndex === -1) {
-              url = mapImage.showMarker(marker);
-              nearestIndex = mapImage._nearestLabelIndex(
-                marker);
-            } else {
-              url = mapImage.showMarkerWithIndex(marker, passedIndex);
-              nearestIndex = passedIndex;
-            }
+            var sliceStart = Math.max(0, nearestIndex - 1);
+            var sliceEnd = Math.min(stations.length, nearestIndex + 1) + 1;
 
             mapImage
               .height(500)
@@ -113,10 +114,12 @@ module.exports = function (app) {
               img_url: mapImage.toURL(),
               title: info.name + '详细信息',
               info: info,
-              stations: stations,
+              currentStation: stations[nearestIndex].name,
+              stations: stations.slice(sliceStart, sliceEnd),
               updateAT: info.updateAT,
               address: info.address,
               poi: info.poi,
+	      routeID:routeID,
               product: process.env.PORT,
             });
           });

@@ -7,7 +7,7 @@ var route1 = require('./route1.json');
 var openURL = require('open');
 var MapImage = require('../lib/MapImage.js');
 
-describe('make image for real route', function() {
+describe.skip('make image for real route', function() {
   var api;
   var coords;
 
