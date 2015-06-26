@@ -16,7 +16,7 @@
     </div>
     <div class="image_content">
       <p >班车: 已经经过  <%= currentStation %>,在<%= address %>( <%= poi %> )附近</p>
-      <a href="moredetail?id=<%= routeID %>">更多详情</a>
+      <a href="moredetails?id=<%= routeID %>">更多详情</a>
     </div>
     <div class="line_and_ad">
       <div class="line">
@@ -24,9 +24,13 @@
         <% function stationItem(sta) {%>
             <li class="<%= sta.cssClass%>"> <%= sta.name %></li>
         <% } %>
-        <% stations.map(stationItem) %>
+        <% var sliceStart = Math.max(0, nearestIndex - 1);
+           var sliceEnd = Math.min(stations.length, nearestIndex + 1) + 1;
+           var lessStaions = stations.slice(sliceStart, sliceEnd);
+              %>
+        <% lessStaions.map(stationItem) %>
           </ul>
-        </div>
+      </div>
         <div class="ad">
           <div class="image_content" >
             <a href="http://121.41.74.107/ad.html">

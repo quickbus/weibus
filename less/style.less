@@ -307,6 +307,88 @@ li{
   }
 }
 
+.tabs{
+
+  margin-top: 20px;
+  height: 250px;
+  position: relative;
+  padding:0;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+
+  li{
+    float: left;
+  }
+  
+  input[type=radio]{
+    display: none;
+  }
+
+  label{
+    padding:10px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background: #d1d1d1;
+    display: block;
+    height: 20px;
+    margin-right: 5px;
+    width: 80px;
+    text-align: center;
+    border-bottom-color: #d1d1d1;
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+    color: white;
+  }
+
+  label:hover{
+    background: #efefef;
+  }
+
+  .content{
+    // float: left;
+    background-color: #fff;
+    display: none;
+    position:absolute;
+    left: 0;
+    width: 100%;
+  }
+  
+  [id^=tab_btn_]:checked + label{
+    background-color: @cf_blue;
+    border-bottom-color: #000;
+    border-bottom-width: 5px;
+    border-bottom-style: solid;  
+
+  }
+
+  [id^=tab_btn_]:checked ~ .content{
+    display: block;
+  }
+
+  .line ul{
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .line {
+    height: 200px;
+    margin-top: 2px;
+    border : 3px solid @cf_blue;
+    border-radius: 5px;
+  }
+
+  .image_content{
+    margin-top: 2px;
+  }
+
+
+
+}
+
+
+
 @import "gt1024.less";
 @import "lt800.less";
 @import "lt400.less";

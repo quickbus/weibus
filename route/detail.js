@@ -36,10 +36,9 @@ var getPassedStations = memoFactory({
 });
 
 
+var createDetailRender = function (view) {
 
-module.exports = function (app) {
-
-  app.get('/detail', function (req, res) {
+  return function (req, res) {
     var routeID = req.query.id || '';
     if (routeID === '') {
       res.render('error');
@@ -109,17 +108,18 @@ module.exports = function (app) {
               .centerTo(marker);
 
 
-            res.render('detail', {
+            res.render(view, {
               routeName: info.name,
               img_url: mapImage.toURL(),
               title: info.name + '详细信息',
               info: info,
               currentStation: stations[nearestIndex].name,
-              stations: stations.slice(sliceStart, sliceEnd),
+              stations: stations,
               updateAT: info.updateAT,
               address: info.address,
               poi: info.poi,
-	      routeID:routeID,
+              routeID: routeID,
+              nearestIndex: nearestIndex,
               product: process.env.PORT,
             });
           });
@@ -128,5 +128,13 @@ module.exports = function (app) {
         res.render('error');
       });
 
-  });
+  };
+};
+
+
+module.exports = function (app) {
+
+  app.get('/detail', createDetailRender('detail'));
+  app.get('/moredetails', createDetailRender('moredetails'));
+
 };

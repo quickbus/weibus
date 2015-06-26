@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+  <body>
+<div class="container">
+  <div class="main">
+    <div class="title">
+      <%= routeName %>
+    </div>
+    <div class="meta_text">
+      <span>更新时间:</span> <span><%= updateAT %></span>
+      <span><a>班车助手</a></span>
+    </div>
+    <div class="image_content">
+      <p >班车: 已经经过  <%= currentStation %>,在<%= address %>( <%= poi %> )附近</p>
+    </div>
+
+    <ul class="tabs">
+      <li>
+        <input id="tab_btn_1" type="radio" checked name="tab_btn" />
+        <label  for="tab_btn_1">路线示意图</label>
+        <div class="content">
+          <div class="line">
+            <ul>
+            <% function stationItem(sta) {%>
+                <li class="<%= sta.cssClass%>"> <%= sta.name %></li>
+            <% } %>
+            <% stations.map(stationItem) %>
+              </ul>
+          </div>
+        </div>
+      </li>
+      <li>
+        <input id="tab_btn_2" type="radio" name="tab_btn" />
+        <label for="tab_btn_2">班车地图</label>
+        <div class="content">
+          <div class="image_content">
+            <img src="<%= img_url %>" />
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="line_and_ad">
+
+      <div class="ad">
+        <div class="image_content" >
+          <a href="http://121.41.74.107/ad.html">
+            <img src="/images/ads/60-1.png" >
+          </a>
+        </div>
+        <div class="image_content" >
+          <a href="http://121.41.74.107/ad.html">
+            <img src="/images/ads/60-1.png" >
+          </a>
+        </div>
+        <div class="image_content" >
+          <a href="http://121.41.74.107/ad.html">
+            <img src="/images/ads/60-1.png" >
+          </a>
+        </div>
+      </div>
+      <div id="ad-area">
+        <div class="more">
+            <a href="http://carrefour.com.cn/dm/DM_Index.aspx?DM_ID=14202">访问家乐福官网获得更多优惠信息</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <% if (!product) { %>
+  <script type="text/javascript">
+    var script = document.createElement("script")
+    script.type = 'text/javascript';
+    script.src = '//' + window.location.hostname + ':35729/livereload.js';
+    document.getElementsByTagName("head")[0].appendChild(script);
+  </script>
+  <% } %>
+  </body>
+</html>
