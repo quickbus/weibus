@@ -264,7 +264,7 @@ li {
 }
 .tabs {
   margin-top: 20px;
-  height: 250px;
+  height: 620px;
   position: relative;
   padding: 0;
   width: 100%;
@@ -283,14 +283,15 @@ li {
   border-top-left-radius: 5px;
   background: #d1d1d1;
   display: block;
-  height: 20px;
+  height: 50px;
   margin-right: 5px;
-  width: 80px;
+  width: 200px;
   text-align: center;
   border-bottom-color: #d1d1d1;
   border-bottom-width: 5px;
   border-bottom-style: solid;
   color: white;
+  font-size: 35px;
 }
 .tabs label:hover {
   background: #efefef;
@@ -312,17 +313,18 @@ li {
   display: block;
 }
 .tabs .line ul {
-  margin-top: 20px;
+  margin-top: 60px;
   width: 100%;
 }
 .tabs .line {
-  height: 200px;
+  height: 550px;
   margin-top: 2px;
   border: 3px solid #0f5397;
   border-radius: 5px;
 }
 .tabs .image_content {
   margin-top: 2px;
+  height: 550px;
 }
 @media screen and (min-width: 1024px) {
   .line ul li {
@@ -357,6 +359,23 @@ li {
   .bottom_bar {
     height: 25px;
     font-size: 25px;
+  }
+  .tabs {
+    height: 300px;
+  }
+  .tabs label {
+    font-size: 20px;
+    height: 30px;
+    width: 100px;
+  }
+  .tabs .line {
+    height: 250px;
+  }
+  .tabs .image_content {
+    height: 250px;
+  }
+  .tabs .image_content img {
+    height: 100%;
   }
 }
 @media screen and (max-width: 400px) {
