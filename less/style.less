@@ -143,6 +143,7 @@ li{
     width: 40%;
     list-style-type: disc;
     overflow: hidden;
+    counter-reset: bus-counter 0;
   }
 
   ul:after{
@@ -178,18 +179,10 @@ li{
     display: block;
   }
 
-  .station--current:before{
-    .base-station;
-    content: "";
-    height: 20px;
-    width: 20px;
-    border: 3px solid rgba(29,34,135,1);
-    /*background-color:rgba(29,34,135,1);*/
-    border-radius: 20%;
-  }
 
-  .station {
 
+  .station { 
+    counter-increment: bus-counter;
   }
 
   .station--passed{
@@ -200,32 +193,46 @@ li{
     color:#acacac;
   }
 
+  .base-before{
+    top:-15px;
+    display: block;
+    height: 30px;
+    width: 30px;
+    content: counter(bus-counter);
+    color: #fff;
+    line-height: 30px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .station--current:before{
+    .base-before;
+    font-size: 25px;
+    height: 30px;
+    width: 30px;
+    border: 3px solid rgba(29,34,135,1);
+    /*background-color:rgba(29,34,135,1);*/
+    background-color: rgba(210,33,21,1);
+    border-radius: 20%;
+  }
+
   .station--passed:before{
-    .base-station;
-    content: "";
-    height: 15px;
-    width: 15px;
+    .base-before;
     border: 3px solid rgba(0,90,170,1);
     background-color:rgba(0,90,170,1);
     border-radius: 50%;
   }
 
   .station--default:before {
-    .base-station;
-    content: "";
-
-    height: 15px;
-    width: 15px;
-    border: 3px solid rgba(0,0,0,0.6);
+    .base-before;
+    padding: 0;
+    border: 1px solid rgba(0,0,0,0.6);
     background-color:rgba(0,0,0,0.1);
     border-radius: 50%;
   }
   .station--start:before {
-    .base-station;
-    content: "";
-    display: block;
-    height: 15px;
-    width: 15px;
+    .base-before;
+    color: @cf_blue;
     // border-radius: 50%;
     border: 2px solid rgba(210,33,21,0.8);
     background-color: rgba(210,33,21,1);
@@ -233,11 +240,7 @@ li{
     border-bottom-right-radius: 50%;
   }
   .station--end:before {
-    .base-station;
-    content: "";
-    display: block;
-    height: 15px;
-    width: 15px;
+    .base-before;
     border: 2px solid rgba(210,33,21,0.8);
     background-color: rgba(210,33,21,1);
     border-bottom-left-radius: 50%;
