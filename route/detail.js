@@ -96,7 +96,7 @@ var createDetailRender = function (view) {
               };
             });
             // stations[0].cssClass = 'station station--start';
-            stations[stations.length - 1].cssClass = 'station station--end';
+            stations[stations.length - 1].cssClass = 'station station--default';
 
             var sliceStart = Math.max(0, nearestIndex - 1);
             var sliceEnd = Math.min(stations.length, nearestIndex + 1) + 1;
