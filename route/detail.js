@@ -36,98 +36,106 @@ var getPassedStations = memoFactory({
 });
 
 
+var getRouteInfo = function (routeID) {
+  var key = 'route:' + routeID;
+
+  return qClient.getAsync(key)
+    .then(function (str) {
+      var info = JSON.parse(str);
+      var marker = {
+        lng: info.lng,
+        lat: info.lat
+      };
+
+      var mapImagePromise = generateStaticMap({
+        id: routeID,
+        name: info.name
+      });
+
+      return Promise.all([
+          getPassedStations(info.name),
+          mapImagePromise
+        ])
+        .then(function (args) {
+          var passedIndex = args[0] || -1;
+          var mapImage = args[1];
+          var url;
+          var nearestIndex;
+
+          if (passedIndex === -1) {
+            url = mapImage.showMarker(marker);
+            nearestIndex = mapImage._nearestLabelIndex(
+              marker);
+          } else {
+            url = mapImage.showMarkerWithIndex(marker, passedIndex);
+            nearestIndex = passedIndex;
+          }
+
+          var stations = mapImage.labels.map(function (lab, index) {
+            var cssClass;
+            if (index === nearestIndex) {
+              cssClass = 'station station--current';
+            } else if (index > nearestIndex) {
+              cssClass = 'station station--default';
+            } else {
+              cssClass = 'station station--passed';
+            }
+
+            return {
+              name: lab.name,
+              lat: lab.pos.lat,
+              lng: lab.pos.lng,
+              cssClass: cssClass
+            };
+          });
+          // stations[0].cssClass = 'station station--start';
+          stations[stations.length - 1].cssClass = 'station station--default';
+
+          var sliceStart = Math.max(0, nearestIndex - 1);
+          var sliceEnd = Math.min(stations.length, nearestIndex + 1) + 1;
+
+          mapImage
+            .height(500)
+            .width(800)
+            .zoomTo(16)
+            .centerTo(marker);
+
+          return {
+            routeName: info.name,
+            img_url: mapImage.toURL(),
+            title: info.name + '详细信息',
+            info: info,
+            currentStation: stations[nearestIndex].name,
+            stations: stations,
+            updateAT: info.updateAT,
+            address: info.address,
+            poi: info.poi,
+            routeID: routeID,
+            nearestIndex: nearestIndex,
+            product: process.env.PORT,
+          };
+        })
+    })
+};
+
 var createDetailRender = function (view) {
 
   return function (req, res) {
     var routeID = req.query.id || '';
+
     if (routeID === '') {
       res.render('error');
       return;
     }
-    var key = 'route:' + routeID;
 
-    qClient.getAsync(key)
-      .then(function (str) {
-        var info = JSON.parse(str);
-        var marker = {
-          lng: info.lng,
-          lat: info.lat
-        };
-
-        var mapImagePromise = generateStaticMap({
-          id: routeID,
-          name: info.name
-        });
-
-        return Promise.all([
-            getPassedStations(info.name),
-            mapImagePromise
-          ])
-          .then(function (args) {
-            var passedIndex = args[0] || -1;
-            var mapImage = args[1];
-            var url;
-            var nearestIndex;
-
-            if (passedIndex === -1) {
-              url = mapImage.showMarker(marker);
-              nearestIndex = mapImage._nearestLabelIndex(
-                marker);
-            } else {
-              url = mapImage.showMarkerWithIndex(marker, passedIndex);
-              nearestIndex = passedIndex;
-            }
-
-            var stations = mapImage.labels.map(function (lab, index) {
-              var cssClass;
-              if (index === nearestIndex) {
-                cssClass = 'station station--current';
-              } else if (index > nearestIndex) {
-                cssClass = 'station station--default';
-              } else {
-                cssClass = 'station station--passed';
-              }
-
-              return {
-                name: lab.name,
-                lat: lab.pos.lat,
-                lng: lab.pos.lng,
-                cssClass: cssClass
-              };
-            });
-            // stations[0].cssClass = 'station station--start';
-            stations[stations.length - 1].cssClass = 'station station--default';
-
-            var sliceStart = Math.max(0, nearestIndex - 1);
-            var sliceEnd = Math.min(stations.length, nearestIndex + 1) + 1;
-
-            mapImage
-              .height(500)
-              .width(800)
-              .zoomTo(16)
-              .centerTo(marker);
-
-
-            res.render(view, {
-              routeName: info.name,
-              img_url: mapImage.toURL(),
-              title: info.name + '详细信息',
-              info: info,
-              currentStation: stations[nearestIndex].name,
-              stations: stations,
-              updateAT: info.updateAT,
-              address: info.address,
-              poi: info.poi,
-              routeID: routeID,
-              nearestIndex: nearestIndex,
-              product: process.env.PORT,
-            });
-          });
-      }).catch(function (err) {
+    getRouteInfo(routeID)
+      .then(function (info) {
+        res.render(view, info)
+      })
+      .catch(function (err) {
         console.log(err, err.stack);
         res.render('error');
       });
-
   };
 };
 
@@ -136,5 +144,25 @@ module.exports = function (app) {
 
   app.get('/detail', createDetailRender('detail'));
   app.get('/moredetails', createDetailRender('moredetails'));
+  app.get('/api/routerinfo', function (req, res) {
+    var routeID = req.query.id || '';
 
-};
+    if (routeID === '') {
+      return res.status(400)
+        .json({
+          error: 'no route ID'
+        });
+    }
+
+    getRouteInfo(routeID)
+      .then(function (info) {
+        res.json(info)
+      })
+      .catch(function (error) {
+        res.status(500)
+          .json({
+            error: error
+          })
+      })
+  });
+}
