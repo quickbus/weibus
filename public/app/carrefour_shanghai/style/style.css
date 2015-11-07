@@ -65,6 +65,7 @@ p {
   background-color: #e7e8eb;
   position: relative;
   margin-bottom: 50px;
+  padding: 30px;
 }
 .main {
   width: 90%;
@@ -82,7 +83,6 @@ p {
   border-radius: 5px;
   margin-bottom: -1px;
   position: relative;
-  padding: 0 5px;
 }
 .image_content img {
   width: 100%;
@@ -160,12 +160,12 @@ li {
 }
 .line {
   width: 100%;
+  padding-top: 10px;
   margin-top: 15px;
 }
 .line ul {
   margin: 0 auto;
   padding: 0;
-  width: 40%;
   list-style-type: disc;
   overflow: hidden;
   counter-reset: bus-counter 0;
@@ -339,70 +339,56 @@ li {
   margin-top: 30px;
   font-size: 30px;
 }
-.tabs {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  height: 620px;
-  position: relative;
-  padding: 0;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+.tabs-navigation {
+  border-bottom: 1px solid #DDD;
 }
-.tabs li {
+.tabs-menu {
+  display: table;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tabs-menu-item {
   float: left;
 }
-.tabs input[type=radio] {
-  display: none;
-}
-.tabs label {
-  padding: 10px;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  background: #d1d1d1;
+.tabs-menu-item a {
   display: block;
-  height: 50px;
+  background: #d1d1d1;
+  height: 40px;
+  font-size: 30px;
   margin-right: 5px;
-  width: 200px;
+  width: 150px;
   text-align: center;
   border-bottom-color: #d1d1d1;
   border-bottom-width: 5px;
   border-bottom-style: solid;
   color: white;
-  font-size: 35px;
 }
-.tabs label:hover {
-  background: #efefef;
+.tabs-menu-item:not(.is-active) a:hover {
+  color: #3498db;
 }
-.tabs .content {
-  background-color: #fff;
-  display: none;
-  position: absolute;
-  left: 0;
-  width: 100%;
-}
-.tabs [id^=tab_btn_]:checked + label {
+.tabs-menu-item.is-active a {
+  background: #fff;
+  border: 1px solid #DDD;
+  border-top: 2px solid #3498db;
+  border-bottom: 0;
+  color: #333;
   background-color: #2196f3;
   border-bottom-color: #000;
   border-bottom-width: 5px;
   border-bottom-style: solid;
 }
-.tabs [id^=tab_btn_]:checked ~ .content {
-  display: block;
-}
-.tabs .line ul {
-  margin-top: 20px;
+.tab-panel .map,
+.tab-panel .panel-item {
+  margin-top: 2px;
   width: 100%;
-}
-.tabs .line {
-  height: 550px;
-  margin-top: 2px;
-  border: 3px solid #2196f3;
+  border: 3px solid #0f5397;
   border-radius: 5px;
+  position: relative;
 }
-.tabs .image_content {
-  margin-top: 2px;
-  height: 550px;
+.tab-panel .map img,
+.tab-panel .panel-item img {
+  width: inherit;
 }
 .fixed-card {
   width: 100%;
@@ -498,9 +484,6 @@ li {
   .bottom_bar {
     height: 25px;
     font-size: 25px;
-  }
-  .tabs {
-    height: 300px;
   }
   .tabs label {
     font-size: 20px;
